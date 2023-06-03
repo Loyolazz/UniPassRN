@@ -6,6 +6,8 @@ import { Login } from './Login';
 import ProfessorRoutes from './Professor/routes';
 import StudentRoutes from './Student/routes';
 
+import Colors from '../assets/Colors';
+
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -22,6 +24,7 @@ export default function Routes() {
 					component={Login}
 					options={{
 						animation: 'slide_from_right',
+						navigationBarColor: Colors.bluePrimary,
 					}}
 				/>
 				<Stack.Screen

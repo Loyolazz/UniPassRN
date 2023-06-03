@@ -6,7 +6,7 @@ import Colors from '../../assets/Colors';
 
 import IconBack from '../../assets/Icons/icon-back.png';
 
-export function Header({ navigation, title, optionalButton }) {
+export function Header({ navigation, title, titleStyle, optionalButton }) {
 	return (
 		<View
 			style={{
@@ -41,6 +41,7 @@ export function Header({ navigation, title, optionalButton }) {
 					fontFamily: Fonts.bold,
 					fontSize: 25,
 					color: 'white',
+					...titleStyle,
 				}}
 			>
 				{title}

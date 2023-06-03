@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import React from 'react';
-import { View, Image } from 'react-native';
+import { SafeAreaView, View, Image } from 'react-native';
 
 import { styles } from './styles';
 
@@ -25,7 +25,7 @@ const data = {
 
 export function Profile({ navigation }) {
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Header
 				navigation={navigation}
 				title="Dados"
@@ -67,6 +67,6 @@ export function Profile({ navigation }) {
 					return <InfoRow key={value[0]} payload={{ key: key(value[0]), value: value[1] }} />;
 				})}
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
