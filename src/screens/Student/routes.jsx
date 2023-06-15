@@ -4,8 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from './Home';
 import { SelectLocation } from './SelectLocation';
 import { Courses } from './Courses';
+import { MyCourses } from './MyCourses';
 import { CourseInfo } from './CourseInfo';
 import { Profile } from './Profile';
+import { Workload } from './Workload';
 import { Faq } from './Faq';
 
 import Colors from '../../assets/Colors';
@@ -45,6 +47,14 @@ export default function Routes() {
 				}}
 			/>
 			<Stack.Screen
+				name="MyCourses"
+				component={MyCourses}
+				options={{
+					animation: 'slide_from_right',
+					navigationBarColor: 'white',
+				}}
+			/>
+			<Stack.Screen
 				name="CourseInfo"
 				component={CourseInfo}
 				options={{
@@ -58,6 +68,14 @@ export default function Routes() {
 				options={{
 					animation: 'slide_from_right',
 					navigationBarColor: 'white',
+				}}
+			/>
+			<Stack.Screen
+				name="Workload"
+				component={Workload}
+				options={{
+					animation: 'slide_from_right',
+					navigationBarColor: Colors.gray,
 				}}
 			/>
 			<Stack.Screen

@@ -1,0 +1,171 @@
+{
+	"users": [
+		{
+			"username": "convidado",
+			"cpf": "123.456.789-10",
+			"password": "12345678",
+			"isProfessor": false,
+			"courses": ["1", "2", "3"],
+			"profile": {
+				"name": "VICTOR EMANUEL SANTOS OLIVEIRA",
+				"cpf": "067.852.026-92",
+				"birthday": "07/07/2004",
+				"email": "victor@email.com",
+				"university": "UniNassau",
+				"semester": "5º PERÍODO",
+				"course": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS",
+				"matricula": "16021422",
+				"validity": "21/06/2023"
+			}
+		},
+		{
+			"username": "loyola",
+			"cpf": "123.456.789-10",
+			"password": "12345678",
+			"isProfessor": false,
+			"courses": ["3", "4", "6"],
+			"profile": {
+				"name": "ARTHUR LOYOLA",
+				"cpf": "067.852.026-92",
+				"birthday": "0X/0X/199X",
+				"email": "loyola@email.com",
+				"university": "UniNassau",
+				"semester": "5º PERÍODO",
+				"course": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS",
+				"matricula": "16021424",
+				"validity": "21/06/2023"
+			}
+		},
+		{
+			"username": "schneider",
+			"cpf": "123.456.789-10",
+			"password": "12345678",
+			"isProfessor": true,
+			"courses": [],
+			"profile": {
+				"name": "SCHNEIDER",
+				"cpf": "067.852.026-92",
+				"birthday": "13/05/1888",
+				"email": "schneider@email.com",
+				"university": "UniNassau",
+				"semester": "5º PERÍODO",
+				"course": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS",
+				"matricula": "16041422",
+				"validity": "21/06/2023"
+			}
+		}
+	],
+	"banners": ["https://imgur.com/xOrgY2r.png", "https://i.imgur.com/JHPyYzv.png"],
+	"faq": [
+		{
+			"title": "O que é o UniPass?",
+			"text": "E eu sei lá da peste..."
+		},
+		{
+			"title": "O que é o UniPass?",
+			"text": "E eu sei lá da peste..."
+		},
+		{
+			"title": "O que é o UniPass?",
+			"text": "E eu sei lá da peste..."
+		},
+		{
+			"title": "O que é o UniPass?",
+			"text": "E eu sei lá da peste..."
+		},
+		{
+			"title": "O que é o UniPass?",
+			"text": "E eu sei lá da peste..."
+		}
+	],
+	"locations": [
+		[
+			"Sergipe",
+			["Macambira", "Itaporanga", "Salgado", "Canidé", "Indiaroba", "Carmopolis", "Pirambu"]
+		],
+		[
+			"São Paulo",
+			["Piedade", "São Caetano", "Birigui", "Santos", "São Vicente", "São Paulo", "Campinas"]
+		],
+		[
+			"Rio de Janeiro",
+			[
+				"Macaé",
+				"Volta Redonda",
+				"Niterói",
+				"Nova Iguaçú",
+				"Saquarema",
+				"Araruama",
+				"Rio de Janeiro"
+			]
+		]
+	],
+	"courses": [
+		{
+			"id": "1",
+			"title": "Café com Código: Introduçao ao React",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		},
+		{
+			"id": "2",
+			"title": "Café com Código: Introduçao ao Python",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		},
+		{
+			"id": "3",
+			"title": "GEEK EVENT 1",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		},
+		{
+			"id": "4",
+			"title": "GEEK EVENT 2",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		},
+		{
+			"id": "5",
+			"title": "GEEK EVENT 3",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		},
+		{
+			"id": "6",
+			"title": "GEEK EVENT 4",
+			"time": "13/12/2023",
+			"description": "Formação profissionalizante gratuita em artes cênicas para jovens e adultos na modalidade presencial e  oratória.",
+			"state": "Sergipe",
+			"city": "Macambira",
+			"initialDate": "20/06/2023",
+			"finalDate": "30/06/2023",
+			"subscribeLimit": 1
+		}
+	]
+}

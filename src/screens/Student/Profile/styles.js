@@ -9,6 +9,10 @@ export const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		alignItems: 'center',
 	},
+	containerScrollView: {
+		alignItems: 'center',
+		paddingBottom: 100,
+	},
 	containerImageProfile: {
 		paddingVertical: 50,
 	},

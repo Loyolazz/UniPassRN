@@ -67,12 +67,22 @@ export function Home({ navigation }) {
 					/>
 					<CardNavigator
 						navigation={navigation}
-						id="Registrations"
+						id="MyCourses"
 						icon={IconInscricoes}
 						text="Minhas Inscrições"
 					/>
-					<CardNavigator navigation={navigation} id="" icon={IconMyTimes} text="Minhas Horas" />
-					<CardNavigator navigation={navigation} id="Faq" icon={IconFaq} text="F.A.Q" />
+					<CardNavigator
+						navigation={navigation}
+						id="Workload"
+						icon={IconMyTimes}
+						text="Minhas Horas"
+					/>
+					<CardNavigator
+						navigation={navigation}
+						id="Faq"
+						icon={IconFaq}
+						text="F.A.Q"
+					/>
 				</View>
 			</ScrollView>
 		</View>

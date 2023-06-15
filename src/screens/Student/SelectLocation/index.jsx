@@ -13,19 +13,11 @@ const dataLocations = [
 	],
 	[
 		'São Paulo',
-		['São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo', 'São Paulo'],
+		['Piedade', 'São Caetano', 'Birigui', 'Santos', 'São Vicente', 'São Paulo', 'Campinas'],
 	],
 	[
 		'Rio de Janeiro',
-		[
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-			'Rio de Janeiro',
-		],
+		['Macaé', 'Volta Redonda', 'Niterói', 'Nova Iguaçú', 'Saquarema', 'Araruama', 'Rio de Janeiro'],
 	],
 ];
 

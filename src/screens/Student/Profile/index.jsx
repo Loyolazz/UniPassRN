@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import React from 'react';
-import { SafeAreaView, View, Image } from 'react-native';
+import { SafeAreaView, View, Image, ScrollView } from 'react-native';
 
 import { styles } from './styles';
 
@@ -31,42 +31,45 @@ export function Profile({ navigation }) {
 				title="Dados"
 				optionalButton={{ icon: IconLogout, handler: () => navigation.navigate('Login'), size: 28 }}
 			/>
-			<View style={styles.containerImageProfile}>
-				<View style={styles.boxImageProfile}>
-					<Image source={IconDefaultProfile} style={styles.imageProfile} resizeMode="center" />
-					<Image source={IconAddProfile} style={styles.addProfile} resizeMode="center" />
-				</View>
-			</View>
 
-			<View style={styles.containerTable}>
-				{Object.entries(data).map((value) => {
-					const key = (key) => {
-						switch (key) {
-							case 'name':
-								return 'NOME:';
-							case 'cpf':
-								return 'CPF:';
-							case 'birthday':
-								return 'DATA DE NASCIMENTO:';
-							case 'email':
-								return 'EMAIL';
-							case 'university':
-								return 'FACULDADE:';
-							case 'semester':
-								return 'SEMESTRE:';
-							case 'course':
-								return 'CURSO:';
-							case 'matricula':
-								return 'MATRÍCULA:';
-							case 'validity':
-								return 'VALIDADE:';
-							default:
-								return '';
-						}
-					};
-					return <InfoRow key={value[0]} payload={{ key: key(value[0]), value: value[1] }} />;
-				})}
-			</View>
+			<ScrollView style={{ width: '100%' }} contentContainerStyle={styles.containerScrollView}>
+				<View style={styles.containerImageProfile}>
+					<View style={styles.boxImageProfile}>
+						<Image source={IconDefaultProfile} style={styles.imageProfile} resizeMode="center" />
+						<Image source={IconAddProfile} style={styles.addProfile} resizeMode="center" />
+					</View>
+				</View>
+
+				<View style={styles.containerTable}>
+					{Object.entries(data).map((value) => {
+						const key = (key) => {
+							switch (key) {
+								case 'name':
+									return 'NOME:';
+								case 'cpf':
+									return 'CPF:';
+								case 'birthday':
+									return 'DATA DE NASCIMENTO:';
+								case 'email':
+									return 'EMAIL';
+								case 'university':
+									return 'FACULDADE:';
+								case 'semester':
+									return 'SEMESTRE:';
+								case 'course':
+									return 'CURSO:';
+								case 'matricula':
+									return 'MATRÍCULA:';
+								case 'validity':
+									return 'VALIDADE:';
+								default:
+									return '';
+							}
+						};
+						return <InfoRow key={value[0]} payload={{ key: key(value[0]), value: value[1] }} />;
+					})}
+				</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }
