@@ -31,11 +31,12 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
+		alignSelf: 'center',
 	},
 	boxCaptions: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		gap: 6
+		gap: 6,
 	},
 	textCaptions: {
 		fontFamily: Fonts.regular,
@@ -64,9 +65,36 @@ export const styles = StyleSheet.create({
 	},
 	containerCertificates: {
 		width: '100%',
-		height: '100%',
+		height: '52%',
 		backgroundColor: Colors.gray,
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,
+		paddingTop: 10,
+	},
+	textCertificates: {
+		fontFamily: Fonts.bold,
+		fontSize: 25,
+		color: 'black',
+		paddingLeft: 30,
+		paddingVertical: 10,
+	},
+	containerCertCaptions: {
+		bottom: 0,
+		paddingVertical: 20,
+		width: '95%',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		alignSelf: 'center',
+	},
+	boxCertCaptions: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 6,
+	},
+	textCertCaptions: {
+		fontFamily: Fonts.bold,
+		fontSize: 15,
+		color: 'black',
 	},
 });

@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import CircularProgress from 'react-native-circular-progress-indicator';
 
 import IconAddCourse from '../../../assets/Icons/icon-add-course.png';
+import IconCertificateAnalysis from '../../../assets/Icons/icon-certificate-analysis.png';
+import IconCertificateAdded from '../../../assets/Icons/icon-certificate-added.png';
+import IconCertificateNotAdded from '../../../assets/Icons/icon-certificate-not-added.png';
 
 import { styles } from './styles';
 
@@ -69,7 +72,113 @@ export function Workload({ navigation }) {
 				</TouchableOpacity>
 			</View>
 
-			<View style={styles.containerCertificates}></View>
+			<View style={styles.containerCertificates}>
+				<Text style={styles.textCertificates}>Certificados</Text>
+
+				<ScrollView
+					style={{ width: '90%', alignSelf: 'center' }}
+					contentContainerStyle={{ paddingBottom: 30, gap: 10 }}
+					showsVerticalScrollIndicator={false}
+				>
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+					<Certificate />
+				</ScrollView>
+
+				<View style={styles.containerCertCaptions}>
+					<View style={styles.boxCaptions}>
+						<View style={{ aspectRatio: 1, width: 21 }}>
+							<Image
+								style={{ width: '100%', height: '100%' }}
+								source={IconCertificateAdded}
+								resizeMode="center"
+							/>
+						</View>
+
+						<Text style={styles.textCertCaptions}>Adicionado</Text>
+					</View>
+
+					<View style={styles.boxCaptions}>
+						<View style={{ aspectRatio: 1, width: 25 }}>
+							<Image
+								style={{ width: '100%', height: '100%' }}
+								source={IconCertificateAnalysis}
+								resizeMode="center"
+							/>
+						</View>
+
+						<Text style={styles.textCertCaptions}>Em análise</Text>
+					</View>
+
+					<View style={styles.boxCaptions}>
+						<View style={{ aspectRatio: 1, width: 21 }}>
+							<Image
+								style={{ width: '100%', height: '100%' }}
+								source={IconCertificateNotAdded}
+								resizeMode="center"
+							/>
+						</View>
+
+						<Text style={styles.textCertCaptions}>Não adicionado</Text>
+					</View>
+				</View>
+			</View>
 		</View>
 	);
 }
+
+const Certificate = () => {
+	return (
+		<View
+			style={{
+				flexDirection: 'row',
+				width: '100%',
+				alignItems: 'center',
+				justifyContent: 'space-between',
+			}}
+		>
+			<Text
+				style={{
+					fontFamily: Fonts.bold,
+					fontSize: 20,
+					color: '#0C264F',
+				}}
+				numberOfLines={1}
+			>
+				Avaliação Institucional
+			</Text>
+
+			<Text
+				style={{
+					fontFamily: Fonts.bold,
+					fontSize: 20,
+					color: '#0C264F',
+				}}
+			>
+				3H
+			</Text>
+
+			<View style={{ aspectRatio: 1, width: 40 }}>
+				<Image
+					style={{ width: '100%', height: '100%' }}
+					source={IconCertificateAnalysis}
+					resizeMode="center"
+				/>
+			</View>
+		</View>
+	);
+};
