@@ -1,42 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ToastAndroid } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 import { styles } from './styles';
-import { Header } from '../../../components/Header';
 import Fonts from '../../../assets/Fonts';
 
-const dataLocations = [
-	[
-		'Sergipe',
-		['Macambira', 'Itaporanga', 'Salgado', 'Canidé', 'Indiaroba', 'Carmopolis', 'Pirambu'],
-	],
-	[
-		'São Paulo',
-		['Piedade', 'São Caetano', 'Birigui', 'Santos', 'São Vicente', 'São Paulo', 'Campinas'],
-	],
-	[
-		'Rio de Janeiro',
-		['Macaé', 'Volta Redonda', 'Niterói', 'Nova Iguaçú', 'Saquarema', 'Araruama', 'Rio de Janeiro'],
-	],
-];
+import { Header } from '../../../components/Header';
 
-const dataStates = [
-	{ value: 'Sergipe', key: 1 },
-	{ value: 'Pernambuco', key: 2 },
-	{ value: 'Bahia', key: 3 },
-	{ value: 'Alagoas', key: 4 },
-];
-
-const dataCities = [
-	{ value: 'Macambira', key: 1 },
-	{ value: 'Itaporanga', key: 2 },
-	{ value: 'Salgado', key: 3 },
-	{ value: 'Canidé', key: 4 },
-	{ value: 'Indiaroba', key: 5 },
-	{ value: 'Carmopolis', key: 6 },
-	{ value: 'Pirambu', key: 7 },
-];
+import { locations } from '../../../services/db.json';
 
 export function SelectLocation({ navigation }) {
 	const [selectedState, setSelectedState] = React.useState('');
@@ -50,15 +21,17 @@ export function SelectLocation({ navigation }) {
 				<SelectList
 					data={() => {
 						let states = [];
-						dataLocations.map((value, index) => {
+						locations.map((value, index) => {
 							states.push({ value: value[0], key: index });
 						});
+
 						return states;
 					}}
 					save="value"
 					setSelected={(select) => setSelectedState(select)}
 					placeholder="Estado"
 					searchPlaceholder="procurar"
+					search={false}
 					notFoundText=""
 					boxStyles={{
 						backgroundColor: '#F0E6E6',
@@ -89,19 +62,21 @@ export function SelectLocation({ navigation }) {
 						if (!selectedState) return [];
 
 						let cities = [];
-						dataLocations.map((value) => {
+						locations.map((value) => {
 							if (value[0] === selectedState) {
 								value[1].map((value, index) => {
 									cities.push({ value: value, key: index });
 								});
 							}
 						});
+
 						return cities;
 					}}
 					save="value"
 					setSelected={(select) => setSelectedCity(select)}
 					placeholder="Cidade"
 					searchPlaceholder="procurar"
+					search={false}
 					notFoundText="selecione o estado"
 					boxStyles={{
 						backgroundColor: '#F0E6E6',
@@ -132,6 +107,8 @@ export function SelectLocation({ navigation }) {
 				onPress={() => {
 					if (selectedState && selectedCity) {
 						navigation.navigate('Courses');
+					} else {
+						ToastAndroid.show('Selecione a região!', ToastAndroid.SHORT);
 					}
 				}}
 			>

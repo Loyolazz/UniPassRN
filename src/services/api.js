@@ -1,37 +1,48 @@
 import DB from './db.json';
+import { storage } from './storage.js';
 
 class Api {
-	getUsers() {
-		return DB.users;
+	getUser() {
+		return DB.user;
 	}
 
-	getUserByUsername(username) {
-		const userIndex = DB.users.findIndex((item) => item.username === username);
+	getUserCourses(onlyIds) {
+		const hasUserCourses = storage.contains('user.courses');
 
-		const user = DB.users[userIndex];
+		if (onlyIds) {
+			return hasUserCourses ? JSON.parse(storage.getString('user.courses')) : null;
+		} else {
+			const ids = JSON.parse(storage.getString('user.courses'));
 
-		return user;
-	}
+			const objectUserCourses = [];
 
-	getUserCourses(username) {
-		const userIndex = DB.users.findIndex((item) => item.username === username);
-
-		const userCoursesIds = DB.users[userIndex].courses;
-
-		const userCourses = [];
-
-		userCoursesIds.forEach((item) => {
-			this.getCourses().forEach((i) => {
-				if (i.id === item) {
-					userCourses.push(i);
+			DB.courses.forEach((course) => {
+				if (ids.includes(course.id)) {
+					objectUserCourses.push(course);
 				}
 			});
-		});
 
-		return userCourses;
+			return objectUserCourses;
+		}
 	}
 
-	setUserCourses(username) {}
+	setUserCourses(courseId) {
+		const hasUserCourses = storage.contains('user.courses');
+
+		if (!hasUserCourses) {
+			storage.set('user.courses', JSON.stringify([courseId]));
+		}
+
+		if (hasUserCourses) {
+			const _getUserCourses = JSON.parse(storage.getString('user.courses'));
+
+			if (!_getUserCourses.includes(courseId)) {
+				_getUserCourses.push(courseId);
+
+				storage.set('user.courses', JSON.stringify(_getUserCourses));
+			}
+		}
+	}
 
 	getBanners() {
 		return DB.banners;
@@ -45,15 +56,13 @@ class Api {
 		return DB.locations;
 	}
 
-	setLocations([state, city]) {}
-
 	getCourses() {
 		return DB.courses;
 	}
 
-	setCourse(data) {}
-
-	updadeCourse(data) {}
+	clearStorage() {
+		storage.clearAll();
+	}
 }
 
 export const api = new Api();

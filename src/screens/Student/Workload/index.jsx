@@ -8,11 +8,14 @@ import IconCertificateAdded from '../../../assets/Icons/icon-certificate-added.p
 import IconCertificateNotAdded from '../../../assets/Icons/icon-certificate-not-added.png';
 
 import { styles } from './styles';
-
-import { Header } from '../../../components/Header';
 import Fonts from '../../../assets/Fonts';
 
+import { Header } from '../../../components/Header';
+import { ModalWorkload } from '../../../components/ModalWorkload';
+
 export function Workload({ navigation }) {
+	const [addCourseModal, setAddCourseModal] = React.useState(false);
+
 	return (
 		<View style={styles.container}>
 			<Header navigation={navigation} title="Carga Horária" />
@@ -20,7 +23,7 @@ export function Workload({ navigation }) {
 			<View style={styles.containerProgress}>
 				<View style={styles.boxProgress}>
 					<CircularProgress
-						value={40}
+						value={12}
 						maxValue={120}
 						progressValueStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
 						title="HORAS"
@@ -67,7 +70,11 @@ export function Workload({ navigation }) {
 			<View style={styles.containerAddCourse}>
 				<Text style={styles.textAddCourse}>Cursos / Atividades</Text>
 
-				<TouchableOpacity activeOpacity={0.8} style={styles.boxIconAddCourse}>
+				<TouchableOpacity
+					activeOpacity={0.8}
+					style={styles.boxIconAddCourse}
+					onPress={() => setAddCourseModal(true)}
+				>
 					<Image source={IconAddCourse} style={styles.iconAddCourse} resizeMode="center" />
 				</TouchableOpacity>
 			</View>
@@ -80,19 +87,6 @@ export function Workload({ navigation }) {
 					contentContainerStyle={{ paddingBottom: 30, gap: 10 }}
 					showsVerticalScrollIndicator={false}
 				>
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
 					<Certificate />
 					<Certificate />
 					<Certificate />
@@ -137,6 +131,8 @@ export function Workload({ navigation }) {
 					</View>
 				</View>
 			</View>
+
+			<ModalWorkload visible={addCourseModal} setVisible={setAddCourseModal} />
 		</View>
 	);
 }

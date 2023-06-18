@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import Colors from '../../assets/Colors';
 import Fonts from '../../assets/Fonts';
 
-export function CourseSheetInfo() {
+export function CourseSheetInfo({ initialDate, finalDate, time }) {
 	return (
 		<View
 			style={{
@@ -48,7 +48,7 @@ export function CourseSheetInfo() {
 						color: 'gray',
 					}}
 				>
-					{'01/03/2023'}
+					{initialDate}
 				</Text>
 			</View>
 
@@ -86,7 +86,7 @@ export function CourseSheetInfo() {
 						color: 'gray',
 					}}
 				>
-					{'01/03/2023'}
+					{finalDate}
 				</Text>
 			</View>
 
@@ -124,7 +124,7 @@ export function CourseSheetInfo() {
 						color: 'gray',
 					}}
 				>
-					{'08:00'}
+					{time}
 				</Text>
 			</View>
 		</View>

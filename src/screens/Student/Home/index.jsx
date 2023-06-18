@@ -12,26 +12,28 @@ import IconFaq from '../../../assets/Icons/icon-faq.png';
 import { CardNavigator } from '../../../components/CardNavigator';
 import { Carousel } from '../../../components/Carousel';
 
+import { api } from '../../../services/api';
+
 export function Home({ navigation }) {
 	const scrollView = React.useRef();
 
-	React.useEffect(() => {
-		setTimeout(() => {
-			scrollView.current.scrollTo({
-				x: 0,
-				y: 80,
-				animated: true,
-			});
-		}, 500);
+	// React.useEffect(() => {
+	// 	setTimeout(() => {
+	// 		scrollView.current.scrollTo({
+	// 			x: 0,
+	// 			y: 80,
+	// 			animated: true,
+	// 		});
+	// 	}, 500);
 
-		setTimeout(() => {
-			scrollView.current.scrollTo({
-				x: 0,
-				y: 0,
-				animated: true,
-			});
-		}, 1000);
-	});
+	// 	setTimeout(() => {
+	// 		scrollView.current.scrollTo({
+	// 			x: 0,
+	// 			y: 0,
+	// 			animated: true,
+	// 		});
+	// 	}, 1000);
+	// });
 
 	return (
 		<View style={styles.container}>
@@ -46,11 +48,7 @@ export function Home({ navigation }) {
 				ref={scrollView}
 				decelerationRate={0.5}
 			>
-				<Carousel
-					style={styles.carousel}
-					navigation={navigation}
-					data={['https://imgur.com/xOrgY2r.png', 'https://i.imgur.com/JHPyYzv.png']}
-				/>
+				<Carousel style={styles.carousel} navigation={navigation} data={api.getBanners()} />
 
 				<View style={styles.containerCards}>
 					<CardNavigator
@@ -77,12 +75,7 @@ export function Home({ navigation }) {
 						icon={IconMyTimes}
 						text="Minhas Horas"
 					/>
-					<CardNavigator
-						navigation={navigation}
-						id="Faq"
-						icon={IconFaq}
-						text="F.A.Q"
-					/>
+					<CardNavigator navigation={navigation} id="Faq" icon={IconFaq} text="F.A.Q" />
 				</View>
 			</ScrollView>
 		</View>

@@ -176,11 +176,7 @@ export function Login({ navigation }) {
 					style={styles.buttonLogin}
 					activeOpacity={0.8}
 					onPress={() => {
-						if (inputCpf === '067.852.025-90') {
-							navigation.navigate('Professor');
-						} else {
-							navigation.navigate('Student');
-						}
+						navigation.navigate('Student');
 					}}
 				>
 					<Text style={styles.textButtonLogin}>Login</Text>

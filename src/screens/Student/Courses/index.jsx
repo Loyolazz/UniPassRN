@@ -7,14 +7,7 @@ import { styles } from './styles';
 
 import { Header } from '../../../components/Header';
 
-const dataCourses = [
-	'Café com Código: Introduçao ao React',
-	'Café com Código: Introduçao ao Python',
-	'GEEK EVENT 1',
-	'GEEK EVENT 2',
-	'GEEK EVENT 3',
-	'GEEK EVENT 4',
-];
+import { courses } from '../../../services/db.json';
 
 const courseStatus = ['active', 'inscripted', 'finished'];
 
@@ -41,15 +34,15 @@ export function Courses({ navigation }) {
 				decelerationRate={0.5}
 				showsVerticalScrollIndicator={false}
 			>
-				{dataCourses.map((value) => {
+				{courses.map((value) => {
 					return (
 						<TouchableOpacity
-							key={value}
+							key={value.id}
 							style={styles.buttonCourse}
 							activeOpacity={0.8}
 							onPress={() => {
 								navigation.navigate('CourseInfo', {
-									title: value,
+									data: value,
 									status: courseStatus[getRandomInt(0, courseStatus.length)],
 								});
 							}}
@@ -58,7 +51,7 @@ export function Courses({ navigation }) {
 								<Image source={Logo} style={styles.imageButtonLogo} resizeMode="center" />
 							</View>
 
-							<Text style={styles.textButton}>{value}</Text>
+							<Text style={styles.textButton}>{value.title}</Text>
 						</TouchableOpacity>
 					);
 				})}

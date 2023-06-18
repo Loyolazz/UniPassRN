@@ -9,11 +9,36 @@ import { Header } from '../../../components/Header';
 
 import { api } from '../../../services/api';
 
+const certStatus = [
+	'cert-available',
+	'cert-not-available',
+	'cert-not-available',
+	'cert-available',
+	'cert-not-available',
+	'cert-not-available',
+	'cert-available',
+	'cert-available',
+	'cert-available',
+	'cert-not-available',
+	'cert-available',
+	'cert-not-available',
+	'cert-not-available',
+	'cert-available',
+	'cert-available',
+	'cert-available',
+];
+
 export function MyCourses({ navigation }) {
 	const [dataCourses, setDataCourses] = React.useState([]);
 
+	const getRandomInt = (min, max) => {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min) + min);
+	};
+
 	React.useEffect(() => {
-		setDataCourses(api.getUserCourses('loyola'));
+		setDataCourses(api.getUserCourses());
 	}, []);
 
 	return (
@@ -32,7 +57,7 @@ export function MyCourses({ navigation }) {
 				decelerationRate={0.5}
 				showsVerticalScrollIndicator={false}
 			>
-				{dataCourses.map((value) => {
+				{dataCourses?.map((value) => {
 					return (
 						<TouchableOpacity
 							key={value.id}
@@ -40,8 +65,8 @@ export function MyCourses({ navigation }) {
 							activeOpacity={0.8}
 							onPress={() => {
 								navigation.navigate('CourseInfo', {
-									title: value.title,
-									status: 'cert-not-available',
+									data: value,
+									certificate: certStatus[getRandomInt(0, certStatus.length)],
 								});
 							}}
 						>

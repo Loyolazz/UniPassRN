@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
 	textLogo: {
 		fontFamily: Fonts.bold,
 		fontSize: 34,
-		marginLeft: -10,
+		marginLeft: -5,
 		color: 'white',
 		lineHeight: 32,
 		letterSpacing: -1,

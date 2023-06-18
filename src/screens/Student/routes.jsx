@@ -1,6 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import Colors from '../../assets/Colors';
+
 import { Home } from './Home';
 import { SelectLocation } from './SelectLocation';
 import { Courses } from './Courses';
@@ -9,8 +11,6 @@ import { CourseInfo } from './CourseInfo';
 import { Profile } from './Profile';
 import { Workload } from './Workload';
 import { Faq } from './Faq';
-
-import Colors from '../../assets/Colors';
 
 const Stack = createNativeStackNavigator();
 
