@@ -11,6 +11,7 @@ import {
 	useWindowDimensions,
 } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { styles } from './styles';
 
@@ -81,108 +82,110 @@ export function Login({ navigation }) {
 
 	return (
 		// <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
-		<ScrollView contentContainerStyle={{ flex: 1 }}>
-			<View style={styles.container}>
-				<Animated.View
-					style={[
-						styles.containerLogo,
-						useAnimatedStyle(() => {
-							'wokrlet';
-							return {
-								transform: [
-									{
-										translateX: containerLogoOffset.value,
-									},
-								],
-							};
-						}),
-					]}
-				>
+		<SafeAreaView style={{ flex: 1 }}>
+			<ScrollView contentContainerStyle={{ flex: 1 }}>
+				<View style={styles.container}>
 					<Animated.View
 						style={[
-							styles.boxLogo,
+							styles.containerLogo,
 							useAnimatedStyle(() => {
-								'worklet';
+								'wokrlet';
 								return {
-									width: logoSize.value,
+									transform: [
+										{
+											translateX: containerLogoOffset.value,
+										},
+									],
 								};
 							}),
 						]}
 					>
-						<Image
-							style={styles.imageLogo}
-							source={require('../../assets/Icons/logo.png')}
-							resizeMode="center"
+						<Animated.View
+							style={[
+								styles.boxLogo,
+								useAnimatedStyle(() => {
+									'worklet';
+									return {
+										width: logoSize.value,
+									};
+								}),
+							]}
+						>
+							<Image
+								style={styles.imageLogo}
+								source={require('../../assets/Icons/logo.png')}
+								resizeMode="center"
+							/>
+						</Animated.View>
+						<Animated.Text
+							style={[
+								styles.textLogo,
+								useAnimatedStyle(() => {
+									'worklet';
+									return {
+										fontSize: titleSize.value,
+										marginLeft: titleMargin.value,
+									};
+								}),
+							]}
+							numberOfLines={keyboardStatus === 'show' ? 1 : null}
+						>
+							{keyboardStatus === 'show' ? 'UniPass' : 'Uni\nPass'}
+						</Animated.Text>
+					</Animated.View>
+
+					<Animated.View
+						style={[
+							styles.containerInputs,
+							useAnimatedStyle(() => {
+								'worklet';
+								return {
+									paddingVertical: paddingInputs.value,
+								};
+							}),
+						]}
+					>
+						<Text style={styles.textLabelInput}>Matrícula:</Text>
+						<TextInput
+							style={styles.textInput}
+							inputMode="numeric"
+							cursorColor="#000"
+							value={inputMatricula}
+							onChangeText={(value) => setInputMatricula(value)}
+						/>
+
+						<Text style={styles.textLabelInput}>CPF:</Text>
+						<TextInput
+							style={styles.textInput}
+							inputMode="numeric"
+							cursorColor="#000"
+							value={inputCpf}
+							onChangeText={(value) => setInputCpf(maskCpf(value))}
+							maxLength={14}
+						/>
+
+						<Text style={styles.textLabelInput}>Senha:</Text>
+						<TextInput
+							style={styles.textInput}
+							secureTextEntry={true}
+							cursorColor="#000"
+							value={inputSenha}
+							onChangeText={(value) => setInputSenha(value)}
 						/>
 					</Animated.View>
-					<Animated.Text
-						style={[
-							styles.textLogo,
-							useAnimatedStyle(() => {
-								'worklet';
-								return {
-									fontSize: titleSize.value,
-									marginLeft: titleMargin.value,
-								};
-							}),
-						]}
-						numberOfLines={keyboardStatus === 'show' ? 1 : null}
+
+					<TouchableOpacity
+						style={styles.buttonLogin}
+						activeOpacity={0.8}
+						onPress={() => {
+							navigation.navigate('Student');
+						}}
 					>
-						{keyboardStatus === 'show' ? 'UniPass' : 'Uni\nPass'}
-					</Animated.Text>
-				</Animated.View>
-
-				<Animated.View
-					style={[
-						styles.containerInputs,
-						useAnimatedStyle(() => {
-							'worklet';
-							return {
-								paddingVertical: paddingInputs.value,
-							};
-						}),
-					]}
-				>
-					<Text style={styles.textLabelInput}>Matrícula:</Text>
-					<TextInput
-						style={styles.textInput}
-						inputMode="numeric"
-						cursorColor="#000"
-						value={inputMatricula}
-						onChangeText={(value) => setInputMatricula(value)}
-					/>
-
-					<Text style={styles.textLabelInput}>CPF:</Text>
-					<TextInput
-						style={styles.textInput}
-						inputMode="numeric"
-						cursorColor="#000"
-						value={inputCpf}
-						onChangeText={(value) => setInputCpf(maskCpf(value))}
-						maxLength={14}
-					/>
-
-					<Text style={styles.textLabelInput}>Senha:</Text>
-					<TextInput
-						style={styles.textInput}
-						secureTextEntry={true}
-						cursorColor="#000"
-						value={inputSenha}
-						onChangeText={(value) => setInputSenha(value)}
-					/>
-				</Animated.View>
-
-				<TouchableOpacity
-					style={styles.buttonLogin}
-					activeOpacity={0.8}
-					onPress={() => {
-						navigation.navigate('Student');
-					}}
-				>
-					<Text style={styles.textButtonLogin}>Login</Text>
-				</TouchableOpacity>
-			</View>
-		</ScrollView>
+						<Text style={styles.textButtonLogin}>Login</Text>
+					</TouchableOpacity>
+				</View>
+			</ScrollView>
+		</SafeAreaView>
 		// </KeyboardAvoidingView>
 	);
 }

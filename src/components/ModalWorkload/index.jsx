@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Modal, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import {
+	View,
+	Modal,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	Image,
+	KeyboardAvoidingView,
+	StyleSheet,
+} from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import IconAddCourse from '../../assets/Icons/icon-add-course.png';
 
 import Colors from '../../assets/Colors';
 import Fonts from '../../assets/Fonts';
-import { KeyboardAvoidingView } from 'react-native';
 
 export function ModalWorkload({ visible, setVisible }) {
 	const [inputCourse, setInputCourse] = React.useState('');
@@ -34,36 +42,36 @@ export function ModalWorkload({ visible, setVisible }) {
 			transparent={true}
 			statusBarTranslucent={true}
 		>
-			<Animated.View
-				style={[
-					{
-						backgroundColor: '#00000064',
-						width: '100%',
-						height: '100%',
-						justifyContent: 'flex-end',
-					},
-					useAnimatedStyle(() => {
-						'worklet';
-						return {
-							opacity: backgroundOpacity.value,
-						};
-					}),
-				]}
-			>
+			<KeyboardAvoidingView behavior="position">
 				<Animated.View
 					style={[
-						styles.container,
+						{
+							backgroundColor: '#00000064',
+							width: '100%',
+							height: '100%',
+							justifyContent: 'flex-end',
+						},
 						useAnimatedStyle(() => {
 							'worklet';
 							return {
-								transform: [{ translateY: boxTranslateY.value }],
+								opacity: backgroundOpacity.value,
 							};
 						}),
 					]}
 				>
-					<Text style={styles.textTitle}>Adicione seu certificado</Text>
+					<Animated.View
+						style={[
+							styles.container,
+							useAnimatedStyle(() => {
+								'worklet';
+								return {
+									transform: [{ translateY: boxTranslateY.value }],
+								};
+							}),
+						]}
+					>
+						<Text style={styles.textTitle}>Adicione seu certificado</Text>
 
-					<KeyboardAvoidingView behavior="height">
 						<View style={styles.containerInputs}>
 							<Text style={styles.textLabelInput}>Curso / Atividade</Text>
 							<TextInput
@@ -77,7 +85,7 @@ export function ModalWorkload({ visible, setVisible }) {
 							<Text style={styles.textLabelInput}>Carga Horária</Text>
 							<TextInput
 								style={styles.textInput}
-								inputMode="numeric"
+								inputMode="text"
 								cursorColor="#000"
 								value={inputTime}
 								onChangeText={(value) => setInputTime(value)}
@@ -97,19 +105,19 @@ export function ModalWorkload({ visible, setVisible }) {
 								</View>
 							</TouchableOpacity>
 						</View>
-					</KeyboardAvoidingView>
 
-					<TouchableOpacity
-						style={styles.buttonSubmit}
-						activeOpacity={0.8}
-						onPress={() => {
-							console.log('Clicou!');
-						}}
-					>
-						<Text style={styles.textButtonSubmit}>Enviar</Text>
-					</TouchableOpacity>
+						<TouchableOpacity
+							style={styles.buttonSubmit}
+							activeOpacity={0.8}
+							onPress={() => {
+								console.log('Clicou!');
+							}}
+						>
+							<Text style={styles.textButtonSubmit}>Enviar</Text>
+						</TouchableOpacity>
+					</Animated.View>
 				</Animated.View>
-			</Animated.View>
+			</KeyboardAvoidingView>
 		</Modal>
 	);
 }

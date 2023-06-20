@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import CircularProgress from 'react-native-circular-progress-indicator';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import IconAddCourse from '../../../assets/Icons/icon-add-course.png';
 import IconCertificateAnalysis from '../../../assets/Icons/icon-certificate-analysis.png';
@@ -17,123 +18,125 @@ export function Workload({ navigation }) {
 	const [addCourseModal, setAddCourseModal] = React.useState(false);
 
 	return (
-		<View style={styles.container}>
-			<Header navigation={navigation} title="Carga Horária" />
+		<SafeAreaView style={{ flex: 1 }}>
+			<View style={styles.container}>
+				<Header navigation={navigation} title="Carga Horária" />
 
-			<View style={styles.containerProgress}>
-				<View style={styles.boxProgress}>
-					<CircularProgress
-						value={12}
-						maxValue={120}
-						progressValueStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
-						title="HORAS"
-						titleStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
-						valueSuffix="/120"
-						valueSuffixStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
-						activeStrokeColor="#52FF00"
-						inActiveStrokeColor="#FF0000"
-						inActiveStrokeWidth={6}
-						radius={80}
-						duration={1000}
-					/>
-				</View>
-
-				<View style={styles.containerCaptions}>
-					<View style={styles.boxCaptions}>
-						<View
-							style={{
-								aspectRatio: 1,
-								width: 20,
-								backgroundColor: '#52FF00',
-								borderRadius: 100,
-							}}
-						/>
-
-						<Text style={styles.textCaptions}>Concluído</Text>
-					</View>
-
-					<View style={styles.boxCaptions}>
-						<Text style={styles.textCaptions}>A concluir</Text>
-
-						<View
-							style={{
-								aspectRatio: 1,
-								width: 20,
-								backgroundColor: '#FF0000',
-								borderRadius: 100,
-							}}
+				<View style={styles.containerProgress}>
+					<View style={styles.boxProgress}>
+						<CircularProgress
+							value={12}
+							maxValue={120}
+							progressValueStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
+							title="HORAS"
+							titleStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
+							valueSuffix="/120"
+							valueSuffixStyle={{ fontFamily: Fonts.bold, fontSize: 20, color: 'white' }}
+							activeStrokeColor="#52FF00"
+							inActiveStrokeColor="#FF0000"
+							inActiveStrokeWidth={6}
+							radius={80}
+							duration={1000}
 						/>
 					</View>
-				</View>
-			</View>
 
-			<View style={styles.containerAddCourse}>
-				<Text style={styles.textAddCourse}>Cursos / Atividades</Text>
-
-				<TouchableOpacity
-					activeOpacity={0.8}
-					style={styles.boxIconAddCourse}
-					onPress={() => setAddCourseModal(true)}
-				>
-					<Image source={IconAddCourse} style={styles.iconAddCourse} resizeMode="center" />
-				</TouchableOpacity>
-			</View>
-
-			<View style={styles.containerCertificates}>
-				<Text style={styles.textCertificates}>Certificados</Text>
-
-				<ScrollView
-					style={{ width: '90%', alignSelf: 'center' }}
-					contentContainerStyle={{ paddingBottom: 30, gap: 10 }}
-					showsVerticalScrollIndicator={false}
-				>
-					<Certificate />
-					<Certificate />
-					<Certificate />
-					<Certificate />
-				</ScrollView>
-
-				<View style={styles.containerCertCaptions}>
-					<View style={styles.boxCaptions}>
-						<View style={{ aspectRatio: 1, width: 21 }}>
-							<Image
-								style={{ width: '100%', height: '100%' }}
-								source={IconCertificateAdded}
-								resizeMode="center"
+					<View style={styles.containerCaptions}>
+						<View style={styles.boxCaptions}>
+							<View
+								style={{
+									aspectRatio: 1,
+									width: 20,
+									backgroundColor: '#52FF00',
+									borderRadius: 100,
+								}}
 							/>
+
+							<Text style={styles.textCaptions}>Concluído</Text>
 						</View>
 
-						<Text style={styles.textCertCaptions}>Adicionado</Text>
-					</View>
+						<View style={styles.boxCaptions}>
+							<Text style={styles.textCaptions}>A concluir</Text>
 
-					<View style={styles.boxCaptions}>
-						<View style={{ aspectRatio: 1, width: 25 }}>
-							<Image
-								style={{ width: '100%', height: '100%' }}
-								source={IconCertificateAnalysis}
-								resizeMode="center"
+							<View
+								style={{
+									aspectRatio: 1,
+									width: 20,
+									backgroundColor: '#FF0000',
+									borderRadius: 100,
+								}}
 							/>
 						</View>
-
-						<Text style={styles.textCertCaptions}>Em análise</Text>
-					</View>
-
-					<View style={styles.boxCaptions}>
-						<View style={{ aspectRatio: 1, width: 21 }}>
-							<Image
-								style={{ width: '100%', height: '100%' }}
-								source={IconCertificateNotAdded}
-								resizeMode="center"
-							/>
-						</View>
-
-						<Text style={styles.textCertCaptions}>Não adicionado</Text>
 					</View>
 				</View>
-			</View>
 
-			<ModalWorkload visible={addCourseModal} setVisible={setAddCourseModal} />
-		</View>
+				<View style={styles.containerAddCourse}>
+					<Text style={styles.textAddCourse}>Cursos / Atividades</Text>
+
+					<TouchableOpacity
+						activeOpacity={0.8}
+						style={styles.boxIconAddCourse}
+						onPress={() => setAddCourseModal(true)}
+					>
+						<Image source={IconAddCourse} style={styles.iconAddCourse} resizeMode="center" />
+					</TouchableOpacity>
+				</View>
+
+				<View style={styles.containerCertificates}>
+					<Text style={styles.textCertificates}>Certificados</Text>
+
+					<ScrollView
+						style={{ width: '90%', alignSelf: 'center' }}
+						contentContainerStyle={{ paddingBottom: 30, gap: 10 }}
+						showsVerticalScrollIndicator={false}
+					>
+						<Certificate />
+						<Certificate />
+						<Certificate />
+						<Certificate />
+					</ScrollView>
+
+					<View style={styles.containerCertCaptions}>
+						<View style={styles.boxCaptions}>
+							<View style={{ aspectRatio: 1, width: 21 }}>
+								<Image
+									style={{ width: '100%', height: '100%' }}
+									source={IconCertificateAdded}
+									resizeMode="center"
+								/>
+							</View>
+
+							<Text style={styles.textCertCaptions}>Adicionado</Text>
+						</View>
+
+						<View style={styles.boxCaptions}>
+							<View style={{ aspectRatio: 1, width: 25 }}>
+								<Image
+									style={{ width: '100%', height: '100%' }}
+									source={IconCertificateAnalysis}
+									resizeMode="center"
+								/>
+							</View>
+
+							<Text style={styles.textCertCaptions}>Em análise</Text>
+						</View>
+
+						<View style={styles.boxCaptions}>
+							<View style={{ aspectRatio: 1, width: 21 }}>
+								<Image
+									style={{ width: '100%', height: '100%' }}
+									source={IconCertificateNotAdded}
+									resizeMode="center"
+								/>
+							</View>
+
+							<Text style={styles.textCertCaptions}>Não adicionado</Text>
+						</View>
+					</View>
+				</View>
+
+				<ModalWorkload visible={addCourseModal} setVisible={setAddCourseModal} />
+			</View>
+		</SafeAreaView>
 	);
 }
 

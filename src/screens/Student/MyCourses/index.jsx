@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Logo from '../../../assets/Icons/logo.png';
 
@@ -42,43 +43,45 @@ export function MyCourses({ navigation }) {
 	}, []);
 
 	return (
-		<View style={styles.container}>
-			<Header
-				navigation={navigation}
-				title="Escolha seu curso/Atividade"
-				titleStyle={{
-					fontSize: 20,
-				}}
-			/>
+		<SafeAreaView style={{ flex: 1 }}>
+			<View style={styles.container}>
+				<Header
+					navigation={navigation}
+					title="Escolha seu curso/Atividade"
+					titleStyle={{
+						fontSize: 20,
+					}}
+				/>
 
-			<ScrollView
-				style={{ width: '100%' }}
-				contentContainerStyle={styles.scrollView}
-				decelerationRate={0.5}
-				showsVerticalScrollIndicator={false}
-			>
-				{dataCourses?.map((value) => {
-					return (
-						<TouchableOpacity
-							key={value.id}
-							style={styles.buttonCourse}
-							activeOpacity={0.8}
-							onPress={() => {
-								navigation.navigate('CourseInfo', {
-									data: value,
-									certificate: certStatus[getRandomInt(0, certStatus.length)],
-								});
-							}}
-						>
-							<View style={styles.boxImageButtonLogo}>
-								<Image source={Logo} style={styles.imageButtonLogo} resizeMode="center" />
-							</View>
+				<ScrollView
+					style={{ width: '100%' }}
+					contentContainerStyle={styles.scrollView}
+					decelerationRate={0.5}
+					showsVerticalScrollIndicator={false}
+				>
+					{dataCourses?.map((value) => {
+						return (
+							<TouchableOpacity
+								key={value.id}
+								style={styles.buttonCourse}
+								activeOpacity={0.8}
+								onPress={() => {
+									navigation.navigate('CourseInfo', {
+										data: value,
+										certificate: certStatus[getRandomInt(0, certStatus.length)],
+									});
+								}}
+							>
+								<View style={styles.boxImageButtonLogo}>
+									<Image source={Logo} style={styles.imageButtonLogo} resizeMode="center" />
+								</View>
 
-							<Text style={styles.textButton}>{value.title}</Text>
-						</TouchableOpacity>
-					);
-				})}
-			</ScrollView>
-		</View>
+								<Text style={styles.textButton}>{value.title}</Text>
+							</TouchableOpacity>
+						);
+					})}
+				</ScrollView>
+			</View>
+		</SafeAreaView>
 	);
 }

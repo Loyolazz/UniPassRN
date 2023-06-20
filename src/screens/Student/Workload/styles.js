@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
 	},
 	containerCertificates: {
 		width: '100%',
-		height: '52%',
+		height: '53%',
 		backgroundColor: Colors.gray,
 		borderTopLeftRadius: 30,
 		borderTopRightRadius: 30,

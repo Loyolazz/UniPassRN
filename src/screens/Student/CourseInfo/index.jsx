@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, ToastAndroid } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import IconCheckOk from '../../../assets/Icons/icon-check-ok.png';
 import IconCheckNot from '../../../assets/Icons/icon-check-not.png';
@@ -39,27 +40,29 @@ export function CourseInfo({ navigation, route }) {
 	});
 
 	return (
-		<View style={styles.container}>
-			<Header navigation={navigation} title="Sobre o Evento" />
+		<SafeAreaView style={{ flex: 1 }}>
+			<View style={styles.container}>
+				<Header navigation={navigation} title="Sobre o Evento" />
 
-			<Text style={styles.textCourseTitle}>{course.title}</Text>
+				<Text style={styles.textCourseTitle}>{course.title}</Text>
 
-			<CourseSheetInfo
-				initialDate={course.initialDate}
-				finalDate={course.finalDate}
-				time={course.time}
-			/>
+				<CourseSheetInfo
+					initialDate={course.initialDate}
+					finalDate={course.finalDate}
+					time={course.time}
+				/>
 
-			<Text style={styles.textTitleResume}>Resumo</Text>
-			<Text style={styles.textResume}>{course.description}</Text>
+				<Text style={styles.textTitleResume}>Resumo</Text>
+				<Text style={styles.textResume}>{course.description}</Text>
 
-			<CourseStatus
-				course={course}
-				status={status}
-				setStatus={setStatus}
-				certificate={certificate}
-			/>
-		</View>
+				<CourseStatus
+					course={course}
+					status={status}
+					setStatus={setStatus}
+					certificate={certificate}
+				/>
+			</View>
+		</SafeAreaView>
 	);
 }
 

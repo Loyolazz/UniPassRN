@@ -12,6 +12,8 @@ class Api {
 		if (onlyIds) {
 			return hasUserCourses ? JSON.parse(storage.getString('user.courses')) : null;
 		} else {
+			if (!hasUserCourses) return null;
+			
 			const ids = JSON.parse(storage.getString('user.courses'));
 
 			const objectUserCourses = [];

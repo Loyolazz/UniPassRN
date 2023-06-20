@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
-import { SafeAreaView, View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { styles } from './styles';
 
